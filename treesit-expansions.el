@@ -70,7 +70,7 @@ See:
 
 ;;;###autoload
 (defun er/treesit-mark-bigger-list-or-node ()
-    "Expand the marked region by navigating Tree Sitter's produced syntax tree.
+  "Expand the marked region by navigating Tree Sitter's produced syntax tree.
 
 When the region is not active: mark the smallest node at point.
 
@@ -86,7 +86,8 @@ When the region is active:
 
         + This region is usually equivalent to
   `er/mark-inside-pairs' but also works for keyword-delimited
-  blocks.
+  blocks such as begin ... end (if the grammar places them as
+  first and last children nodes).
 
         + The first and last child nodes are unnamed, who are
   delimiters, there must be 2 or mode named nodes between those,
@@ -139,7 +140,7 @@ When the region is active:
                      (treesit-node-end
                       (treesit-node-child super-node -1 'named)))
                     (_
-                     (and (<= list-beg cover-beg cover-end list-end)
+                     (and (< list-beg cover-beg cover-end list-end)
                           (er/treesit--balanced-region-p list-beg list-end))))
             (er/treesit-mark--from-to list-end list-beg)
             (er/treesit-mark--from-to
