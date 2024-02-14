@@ -1,3 +1,5 @@
+;; Copyright (C) 2012-2023  Free Software Foundation, Inc  -*- lexical-binding: t; -*-
+
 (let* ((current-directory (file-name-directory load-file-name))
        (features-directory (expand-file-name ".." current-directory))
        (project-directory (expand-file-name ".." features-directory)))
